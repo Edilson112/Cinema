@@ -1,0 +1,165 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 21, 2024, 4:56:10 PM
+    Author     : Sysadmin
+*/
+.bigWhite{
+    -fx-background-color: #fff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 8,0,0,0);
+    -fx-background-radius: 8px;
+}
+
+.bigWhite:hover{
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8,0,0,0);
+}
+
+
+/* styles.css */
+
+.table-view {
+    -fx-background-color: transparent; /* Fundo transparente para a tabela */
+    -fx-border-color: #d9d9d9; /* Borda mais suave */
+    -fx-border-width: 1px; /* Largura fina da borda */
+}
+
+.table-view .column-header {
+    -fx-background-color: #f7f7f7; /* Fundo mais suave para o cabeçalho */
+    -fx-text-fill: #4d4d4d; /* Texto em cinza escuro */
+    -fx-font-weight: bold; /* Negrito no cabeçalho */
+    -fx-border-color: #d9d9d9; /* Borda suave no cabeçalho */
+    -fx-border-width: 0 0 1px 0; /* Borda inferior */
+    -fx-padding: 10 5; /* Espaçamento interno do cabeçalho */
+}
+
+.table-view .table-row-cell {
+    -fx-border-color: #e0e0e0; /* Borda fina e suave para as células */
+    -fx-text-fill: #4d4d4d; /* Texto em cinza escuro para as células */
+    -fx-background-color: #ffffff; /* Fundo branco nas linhas */
+}
+
+.table-view .table-row-cell:nth-child(even) {
+    -fx-background-color: #f9f9f9; /* Fundo alternado para linhas pares */
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #f1f1f1; /* Fundo mais suave ao passar o mouse */
+}
+
+.table-view .table-row-cell .text {
+    -fx-padding: 12 8; 
+    -fx-font-size: 13px;
+}
+
+
+.image-view {
+    -fx-fit-width: 300px;  /* Definir largura */
+    -fx-fit-height: 150px; /* Definir altura */
+    -fx-preserve-ratio: true;  /* Manter a proporção da imagem */
+}
+
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #d1e7f7; 
+    -fx-text-fill: #333; 
+}
+
+.table-view .table-row-cell:focused {
+    -fx-background-color: #d1e7f7; 
+    -fx-text-fill: #333; 
+}
+
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('Font/Rye-Regular.ttf');
+}
+
+.label {
+    -fx-font-family: 'MinhaFonte';  
+}
+
+.bigBlack1{
+    -fx-background-color: #000000; /* Cinza escuro */
+    -fx-border-color: white;         /* Borda branca */
+    -fx-border-width: 2px;         /* Largura da borda */
+    -fx-border-radius: 8px;        /* Arredondamento da borda */
+    -fx-background-radius: 8px;    /* Arredondamento da cor de fundo */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0); /* Sombra branca */
+}
+
+.bigBlack1:hover{
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.7), 15, 0, 0, 0); /* Sombra branca ao passar o mouse */
+}
+
+/* Classe principal para animação da borda */
+/* Classe principal para animação da borda */
+.animated-border {
+    -fx-background-color: black;
+    -fx-border-radius: 15px; /* Bordas arredondadas */
+    -fx-border-width: 6px;
+    -fx-border-insets: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 15, 0.5, 0, 0);
+    -fx-border-image-source: linear-gradient(
+        to right, 
+        #ff0000, 
+        #ff7f00, 
+        #ffff00, 
+        #7fff00, 
+        #00ff00, 
+        #00ff7f, 
+        #00ffff, 
+        #007fff, 
+        #0000ff, 
+        #7f00ff, 
+        #ff00ff, 
+        #ff007f
+    );
+    -fx-border-image-slice: 1;
+    -fx-border-image-width: 6;
+    -fx-border-image-repeat: stretch;
+    -fx-transition: -fx-border-image-source 10s linear infinite;
+}
+
+@keyframes borderGradientAnimation {
+    0% {
+        -fx-border-image-source: linear-gradient(
+            to right, 
+            #ff0000, 
+            #ff7f00, 
+            #ffff00, 
+            #7fff00, 
+            #00ff00, 
+            #00ff7f, 
+            #00ffff, 
+            #007fff, 
+            #0000ff, 
+            #7f00ff, 
+            #ff00ff, 
+            #ff007f
+        );
+    }
+    100% {
+        -fx-border-image-source: linear-gradient(
+            to left, 
+            #ff007f, 
+            #ff00ff, 
+            #7f00ff, 
+            #0000ff, 
+            #007fff, 
+            #00ffff, 
+            #00ff7f, 
+            #00ff00, 
+            #7fff00, 
+            #ffff00, 
+            #ff7f00, 
+            #ff0000
+        );
+    }
+}
+
+.animated-border {
+    -fx-animation: borderGradientAnimation 20s infinite alternate;
+}

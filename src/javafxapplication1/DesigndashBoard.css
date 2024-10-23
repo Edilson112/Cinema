@@ -1,0 +1,452 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 23, 2024, 1:30:51 AM
+    Author     : Sysadmin
+*/
+
+.top-form{
+    -fx-background-color: #fff;
+    -fx-border-color: #000;
+    -fx-border-width: .2px .2px .4px .2px;
+}
+
+.close{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    
+}
+
+.close:hover{
+    -fx-background-color: #df0e0e;
+}
+
+.minimize{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.minimize:hover{
+    -fx-background-color: #dadada;
+}
+
+.nav-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-alignment: CENTER_LEFT;
+    
+}
+
+
+
+.signout{
+     -fx-background-color:#ae2d3c;
+     -fx-background-radius: 15px;
+     -fx-cursor: hand;
+     
+        
+}
+
+.signout:hover{
+    -fx-background-color:#d62651;
+}
+
+.PLAY{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.PLAY:hover{
+    -fx-background-color: #dadada;
+}
+
+
+
+
+.bigWhite{
+    -fx-background-color: #fff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 8,0,0,0);
+    -fx-background-radius: 8px;
+}
+
+.bigWhite:hover{
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8,0,0,0);
+}
+
+.bigBlack{
+    -fx-background-color: #333333; /* Cinza escuro */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,.3), 8, 0, 0, 0);
+    -fx-background-radius: 8px;
+}
+
+.bigBlack:hover{
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.bigBlack1{
+    -fx-background-color: #000000; /* Cinza escuro */
+    -fx-border-color: white;         /* Borda branca */
+    -fx-border-width: 2px;         /* Largura da borda */
+    -fx-border-radius: 8px;        /* Arredondamento da borda */
+    -fx-background-radius: 8px;    /* Arredondamento da cor de fundo */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0); /* Sombra branca */
+}
+
+.bigBlack1:hover{
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.7), 15, 0, 0, 0); /* Sombra branca ao passar o mouse */
+}
+
+
+.card1{
+    -fx-background-color: linear-gradient(to right, #2b428c, #2e58ab);
+    -fx-background-radius: 0px 10px 10px 0px;
+    
+}
+.card1-left{
+    -fx-background-color: linear-gradient(to right, #213778, #2b428c);
+}
+
+.card1:hover{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
+}
+
+
+.card2{
+    -fx-background-color: linear-gradient( to right, #772d90, #a42fb8);
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+.card2:hover{
+      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0); 
+}
+
+.card2-left{
+    -fx-background-color: linear-gradient( to right, #641f7f, #772d90); 
+}
+
+
+.card3{
+    -fx-background-color: linear-gradient( to right, #9d2249, #cc1c5a);
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+.card3-left{
+    -fx-background-color: linear-gradient( to right, #891a41, #9d2249); 
+}
+
+.card3:hover{
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0); 
+}
+
+
+/*adicionar filmes*/
+ 
+
+.add-textfield{
+    -fx-background-color: #fff;
+    -fx-background-radius: 0px 5px 0px 0px;
+    -fx-border-color: #1e242e;
+    -fx-border-width:.8px;
+    -fx-border-radius: 0px 5px 0px 0px;
+    -fx-font-size:14px;   
+}
+
+
+.add-textfield:focused{
+    -fx-border-color: #ae2d3c;
+    -fx-border-width: 1px;
+}
+
+.inset-btn{
+    -fx-background-color: #24337e;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand;
+}
+
+.inset-btn:hover{
+    -fx-background-color: #3c71c4;
+}
+
+.inset-btn1{
+    -fx-background-color: #29914f;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand;
+}
+
+.textlk {
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+    -fx-text-fill: white; /* Cor do texto em branco */
+    -fx-padding: 10px; /* Espaçamento interno */
+    -fx-border-radius: 10px; /* Bordas arredondadas */
+    -fx-background-radius: 10px; /* Arredondar o fundo junto com a borda */
+    -fx-font-size: 30px; /* Tamanho da fonte do texto */
+    -fx-font-family: "Arial"; /* Família de fontes */
+    -fx-wrap-text: true; /* Para quebrar linha no texto longo */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0); /* Sombra branca */
+}
+
+.textlk:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.7), 15, 0, 0, 0); /* Sombra branca mais intensa ao passar o mouse */
+}
+
+.labelk {
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+    -fx-text-fill: white; /* Cor do texto em branco */
+    -fx-padding: 10px; /* Espaçamento interno */
+    -fx-border-radius: 10px; /* Bordas arredondadas */
+    -fx-background-radius: 10px; /* Arredondar o fundo junto com a borda */
+    -fx-font-size: 19px; /* Tamanho da fonte do texto */
+    -fx-font-family: "Arial"; /* Família de fontes */
+    -fx-wrap-text: true; /* Para quebrar linha no texto longo */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0); /* Sombra branca */
+}
+
+.labelk:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.7), 15, 0, 0, 0); /* Sombra branca mais intensa ao passar o mouse */
+}
+
+.lktitulo{
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+    -fx-text-fill: white; /* Cor do texto em branco */
+    -fx-padding: 10px; /* Espaçamento interno */
+    -fx-border-radius: 10px; /* Bordas arredondadas */
+    -fx-background-radius: 10px; /* Arredondar o fundo junto com a borda */
+    -fx-font-size: 36px; /* Tamanho da fonte maior para destaque */
+    -fx-font-family: "Impact"; /* Fonte chamativa nativa */
+    -fx-wrap-text: true; /* Quebra de linha no texto longo */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0); /* Sombra branca */
+}
+
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url(BebasNeue-Regular.ttf); /* Caminho para o arquivo da fonte */
+}
+
+.label_titulo{
+    -fx-font-family: "MinhaFonte";
+        -fx-font-size: 20px;
+}
+
+
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('Font/Anton-Regular.ttf'); 
+}
+
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
+
+
+
+
+
+.inset-btn1:hover{
+    -fx-background-color: #3c71c4;
+}
+
+.inset-btn2{
+    -fx-background-color: #29914f;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand;
+}
+
+.inset-btn2:hover{
+    -fx-background-color: #3c71c4;
+}
+
+
+.trailer-btn{
+    -fx-background-color: #a91a1a;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand;
+}
+
+.trailer-btn:hover{
+    -fx-background-color: #d14b4b;
+}
+
+.update-btn{
+      -fx-background-color: #3b4cbf;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand;
+}
+
+
+
+.update-btn:hover{
+    -fx-background-color: #1d75b4;
+}
+
+.limpar2-btn{
+     -fx-background-color: #29844c;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand;
+}
+
+.limpar2-btn:hover{
+    -fx-background-color: #28b960;
+}
+
+
+.delete-btn{
+     -fx-background-color: #9e2828;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand; 
+}
+
+.delete-btn:hover{
+    -fx-background-color: #c43939;
+}
+
+.clear-btn{
+   -fx-background-color: #1e496b;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font-size:14px;
+    -fx-cursor: hand;  
+}
+
+.clear-btn:hover{
+    -fx-background-color: #1d75b4;
+}
+
+.search{
+    -fx-background-color: #fff;
+    -fx-background-radius: 0px 10px 0px 0px;
+    -fx-border-color: #1e242e;
+    -fx-border-width: 1px;
+    -fx-font-size:14px;
+    -fx-border-radius: 0px 10px 0px 0px;
+    -fx-padding: 0px 0px 0px 30px;
+}
+
+.search:focused{
+    -fx-border-color: #ae2d3c;
+    -fx-border-width: 2px;
+}
+
+.table-view{
+    -fx-background-color: #fff;
+    -fx-background-radius: 10px;
+    -fx-border-color: #ae2d3c;
+    -fx-border-radius: 10px;
+    -fx-fill:#fff;
+    -fx-padding: 0px;
+}
+
+.table-view .column-header-background{
+ -fx-background-color: linear-gradient(to top left, #1e242e, #ae2d3c);
+ -fx-background-insets:  0 0 0 0;
+ -fx-background-radius:  10px 10px 0px 0px;
+}
+
+.table-view .column-header, .table-view .filler{
+    -fx-background-color: transparent;
+    -fx-size:50px;
+    -fx-fill:#fff;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill:#fff; 
+}
+
+.info-card{
+    -fx-border-color: #ae2d3c;
+    -fx-border-radius: 10px 0px 0px 10px;
+}
+     
+.label-info{
+    -fx-border-color: #ae2d3c;
+    -fx-border-radius:0px 5px 0px 0px;
+    -fx-border-width:.8px;
+    -fx-padding:.8px;
+    -fx-font-size:14px;
+}
+
+.spinner{
+    -fx-background-color: #fff;
+    -fx-border-color: #000;
+    -fx-border-width: .8px;
+    
+}
+
+.buy-btn{
+    -fx-background-color: #216da4;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-background-radius: 8px;
+}
+
+.buy-btn:hover{
+    -fx-background-color: #3babb5;
+}
+
+.recibo-btn{
+    -fx-background-color: #245c84;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-background-radius: 8px;
+}
+
+.recibo-btn:hover{
+    -fx-background-color: #46adc7;
+}
+
+.limpar-btn{
+    -fx-background-color: #22437b;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-background-radius: 8px;
+}
+
+.limpar-btn:hover{
+  -fx-background-color: #46adc7;  
+}
+
+.combo-box{
+    -fx-background-color: #fff;
+    -fx-background-radius: 5px;
+    -fx-border-color: #1e242e;
+    -fx-border-width: .5px;
+    -fx-border-radius: 5px;
+}
+
+.combo-box:focused{
+ -fx-border-color: #ae2d3c;
+ -fx-border-width: 1px;
+}
+
+.card-customer{
+    -fx-background-color: #fff;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ae2d3c;
+    -fx-border-width: .8px;
+    -fx-border-radius: 5px;
+    
+}

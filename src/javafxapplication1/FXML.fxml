@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.FXMLDocumentControlController">
+   <children>
+      <AnchorPane fx:id="signin_form" prefHeight="600.0" prefWidth="800.0" styleClass="bg-form" stylesheets="@Designlogin.css">
+         <children>
+            <Button fx:id="signin_Close" layoutX="736.0" layoutY="-1.0" mnemonicParsing="false" onAction="#signIn_close" prefHeight="30.0" prefWidth="54.0" styleClass="close" stylesheets="@DesigndashBoard.css" textFill="#ac5454">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
+               </graphic>
+            </Button>
+            <Button fx:id="signin_minimize" layoutX="682.0" layoutY="-1.0" mnemonicParsing="false" onAction="#signIn_minimize" prefHeight="29.0" prefWidth="54.0" styleClass="minimize" stylesheets="@DesigndashBoard.css" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="MINUS" size="1.2em" styleClass="bg-form2" />
+               </graphic>
+               <effect>
+                  <ColorAdjust brightness="-0.03" />
+               </effect>
+            </Button>
+            <PasswordField fx:id="signin_password" layoutX="324.0" layoutY="360.0" onAction="#signin" promptText="password" styleClass="textField" />
+            <FontAwesomeIconView glyphName="USER" layoutX="363.0" layoutY="191.0" size="8em" wrappingWidth="74.89991474151611">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.0833333351395347" startY="0.6515151361624401">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.5" green="0.3979695439338684" blue="0.3499999940395355" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.5" green="0.3979695439338684" blue="0.3499999940395355" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5343203230148048">
+                           <color>
+                              <Color red="0.43921568989753723" green="0.5960784554481506" blue="0.7176470756530762" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.43921568989753723" green="0.5960784554481506" blue="0.7176470756530762" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </FontAwesomeIconView>
+            <Label layoutX="359.0" layoutY="206.0" text="Sign in" textFill="#3e4548">
+               <font>
+                  <Font name="Berlin Sans FB" size="30.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="1.0">
+                     <input>
+                        <ColorAdjust brightness="1.0" />
+                     </input>
+                  </Bloom>
+               </effect>
+            </Label>
+            <Button fx:id="signin_loginbtn" layoutX="366.0" layoutY="432.0" mnemonicParsing="false" onAction="#signin" prefHeight="35.0" prefWidth="67.0" styleClass="bg-form4" stylesheets="@Designlogin.css" textFill="#175584">
+               <font>
+                  <Font name="System Italic" size="23.0" />
+               </font>
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color red="0.6000000238418579" green="0.30444443225860596" blue="0.30444443225860596" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_RIGHT" />
+               </graphic>
+            </Button>
+            <Hyperlink fx:id="signin_creatAccount" layoutX="332.0" layoutY="513.0" onAction="#switchForm" text="Criar uma nova conta" textFill="#e75050" />
+            <Separator layoutX="736.0" layoutY="4.0" orientation="VERTICAL" prefHeight="18.0" prefWidth="4.0" />
+            <TextField fx:id="signin_username" layoutX="324.0" layoutY="300.0" onAction="#signin" promptText="Username" styleClass="textField" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="signUp_form" prefHeight="600.0" prefWidth="800.0" styleClass="bg-form" stylesheets="@Designlogin.css" visible="false">
+         <children>
+            <Button fx:id="signUp_close" layoutX="736.0" layoutY="-1.0" mnemonicParsing="false" onAction="#signUp_close" prefHeight="30.0" prefWidth="54.0" styleClass="close" stylesheets="@DesigndashBoard.css" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
+               </graphic>
+            </Button>
+            <Button fx:id="signUp_minimize" layoutX="682.0" layoutY="-1.0" mnemonicParsing="false" onAction="#signUp_minimize" prefHeight="29.0" prefWidth="54.0" styleClass="minimize" stylesheets="@DesigndashBoard.css">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="MINUS" size="1.2em" />
+               </graphic>
+            </Button>
+            <PasswordField fx:id="signUp_password" layoutX="324.0" layoutY="402.0" promptText="password" styleClass="textField" />
+            <FontAwesomeIconView glyphName="USER_PLUS" layoutX="363.0" layoutY="192.0" size="8em" wrappingWidth="74.89991474151611">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.4842105209827423" green="0.3120467960834503" blue="0.3120467960834503" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.4842105209827423" green="0.3120467960834503" blue="0.3120467960834503" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.14949999749660492" green="0.6499999761581421" blue="0.4080069661140442" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </FontAwesomeIconView>
+            <Label layoutX="359.0" layoutY="219.0" text="Sign Up" textFill="#3e4548">
+               <font>
+                  <Font name="Berlin Sans FB" size="30.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="1.0">
+                     <input>
+                        <ColorAdjust brightness="1.0" />
+                     </input>
+                  </Bloom>
+               </effect>
+            </Label>
+            <Button fx:id="signUp_Entrar" layoutX="366.0" layoutY="496.0" mnemonicParsing="false" onAction="#signup" prefHeight="35.0" prefWidth="67.0" styleClass="bg-form1" stylesheets="@Designlogin.css">
+               <font>
+                  <Font name="System Italic" size="23.0" />
+               </font>
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color red="0.6000000238418579" green="0.30444443225860596" blue="0.30444443225860596" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_RIGHT" />
+               </graphic>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.2235294133424759" green="0.6117647290229797" blue="0.37254902720451355" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.0784313753247261" green="0.4941176474094391" blue="0.32156863808631897" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Hyperlink fx:id="signUp_temCOnta" layoutX="339.0" layoutY="541.0" onAction="#switchForm" text="Ja tem uma conta?" textFill="#ac3c3c" />
+            <Separator layoutX="735.0" layoutY="5.0" orientation="VERTICAL" prefHeight="18.0" prefWidth="4.0" />
+            <TextField fx:id="signUp_Username" layoutX="324.0" layoutY="360.0" promptText="Username" styleClass="textField" />
+            <TextField fx:id="signUp_email" layoutX="324.0" layoutY="324.0" promptText="Email Address" styleClass="textField" />
+            <ComboBox fx:id="cargo" layoutX="310.0" layoutY="447.0" onAction="#comboBox" prefHeight="30.0" prefWidth="202.0" promptText="cargo" styleClass="textField" stylesheets="@DesigndashBoard.css" />
+            <Label fx:id="signUp_EmailRegra" alignment="CENTER" layoutX="512.0" layoutY="323.0" prefHeight="30.0" prefWidth="202.0" styleClass="rules-label" stylesheets="@Designlogin.css" text="Ex: User@gmail.com" textFill="WHITE" underline="true" />
+            <Label fx:id="SignUp_passwordRegra" alignment="CENTER" layoutX="512.0" layoutY="401.0" prefHeight="35.0" prefWidth="279.0" styleClass="rules-label" stylesheets="@Designlogin.css" text="Nb: Deve conter pelo menos 8 Caracteres" textFill="WHITE" underline="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

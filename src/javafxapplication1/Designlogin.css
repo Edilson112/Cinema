@@ -1,0 +1,126 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 3, 2024, 5:46:52 AM
+    Author     : Sysadmin
+*/
+
+.bg-form{
+    -fx-background-color:linear-gradient(to top right,#1e242e, #ae2d3c ); 
+}
+
+
+
+.bg-form1{
+    -fx-background-color:linear-gradient(to top right, #2e966c, #2e966c); 
+    -fx-cursor: hand;
+}
+
+.bg-form1:hover{
+    -fx-background-color: #147e52;
+}
+
+.bg-form4{
+-fx-background-color:linear-gradient(to top right, #7098b7,  #7098b7); 
+ -fx-cursor: hand;
+}
+
+.bg-form4:hover{
+    -fx-background-color: #175584;
+}
+
+
+.bg-form2{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.bg-form2:hover{
+ -fx-background-color:aqua;   
+}
+
+
+
+.textField{
+    -fx-background-color: transparent;
+    -fx-text-inner-color:#fff;
+    -fx-border-color: d63333;
+    -fx-border-width: 0px 0px .4px 0px;
+}
+
+.textField:focused{
+    -fx-border-color: #fb6363;
+    -fx-border-width: 0px 1px 1px 0px;
+}
+
+
+.labelll1{
+  -fx-background-color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+    -fx-text-fill: white; /* Cor do texto em branco */
+    -fx-padding: 10px; /* Espaçamento interno */
+    -fx-border-radius: 10px; /* Bordas arredondadas */
+    -fx-background-radius: 10px; /* Arredondar o fundo junto com a borda */
+    -fx-font-size: 19px; /* Tamanho da fonte do texto */
+    -fx-font-family: "Arial"; /* Família de fontes */
+    -fx-wrap-text: true; /* Para quebrar linha no texto longo */
+}
+
+
+/* styles.css */
+/* Estilo para as labels de regras */
+.rules-label {
+    -fx-text-fill: red;              /* Cor do texto em vermelho para destacar */
+    -fx-font-size: 13px;             /* Tamanho da fonte menor para parecer uma dica */
+    -fx-font-style: italic;          /* Estilo da fonte em itálico */
+    -fx-padding: 5px;                /* Espaçamento interno */
+    -fx-background-color: #fbe9e7;   /* Cor de fundo suave (um tom de rosa claro) */
+    -fx-border-color: #ff5722;       /* Borda em laranja avermelhado para destacar */
+    -fx-border-width: 1px;           /* Largura da borda fina */
+    -fx-border-radius: 5px;          /* Canto arredondado para a borda */
+    -fx-background-radius: 5px;      /* Canto arredondado para o fundo */
+}
+
+.rules-label:hover {
+    -fx-background-color: #ffcdd2;   /* Mudar cor de fundo ao passar o mouse (hover) */
+    -fx-cursor: hand;                /* Mudar o cursor ao passar sobre o label */
+}
+
+
+
+
+/* Estilo da barra de rolagem */
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button,
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: #e0e0e0;
+}
+
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: #cccccc;
+}
+
+.scroll-bar:vertical .track, .scroll-bar:horizontal .track {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Tooltip para ajudar na usabilidade */
+.table-view .tooltip {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #4e73df;
+    -fx-text-fill: #333;
+    -fx-font-size: 12px;
+}
+
+.labeltest {
+    fx-text-fill: white;
+     -fx-font-size: 18px; /* Tamanho da fonte do texto */
+    -fx-font-family: "Arial"; /* Família de fontes */
+    
+}
+
+
+

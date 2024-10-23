@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="226" pageHeight="425" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="3.3000000000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="recibo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     info_cliente.`id` AS info_cliente_id,
+     info_cliente.`id_cliente` AS info_cliente_id_cliente,
+     info_cliente.`tipo` AS info_cliente_tipo,
+     info_cliente.`total` AS info_cliente_total,
+     info_cliente.`TituloFilme` AS info_cliente_TituloFilme,
+     cliente.`id` AS cliente_id,
+     cliente.`tipo` AS cliente_tipo,
+     cliente.`total` AS cliente_total,
+     cliente.`data` AS cliente_data,
+     info_cliente.`quantidade` AS info_cliente_quantidade,
+     cliente.`quantidade` AS cliente_quantidade
+FROM
+     `info_cliente` info_cliente INNER JOIN `cliente` cliente ON info_cliente.`id_cliente` = cliente.`id`
+WHERE
+     cliente.`id` = $P{recibo}]]>
+	</queryString>
+	<field name="info_cliente_id" class="java.lang.Integer"/>
+	<field name="info_cliente_id_cliente" class="java.lang.Integer"/>
+	<field name="info_cliente_tipo" class="java.lang.String"/>
+	<field name="info_cliente_total" class="java.lang.Integer"/>
+	<field name="info_cliente_TituloFilme" class="java.lang.String"/>
+	<field name="cliente_id" class="java.lang.Integer"/>
+	<field name="cliente_tipo" class="java.lang.String"/>
+	<field name="cliente_total" class="java.lang.Double"/>
+	<field name="cliente_data" class="java.sql.Date"/>
+	<field name="info_cliente_quantidade" class="java.lang.Integer"/>
+	<field name="cliente_quantidade" class="java.lang.Integer"/>
+	<group name="info cliente">
+		<groupExpression><![CDATA[$F{info_cliente_id}]]></groupExpression>
+		<groupFooter>
+			<band height="50">
+				<staticText>
+					<reportElement x="39" y="20" width="100" height="20"/>
+					<textElement/>
+					<text><![CDATA[Pagamento Total: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="121" y="20" width="31" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{cliente_total}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="152" y="20" width="34" height="20"/>
+					<textElement/>
+					<text><![CDATA[Mts]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="26" width="106" height="50"/>
+				<textElement>
+					<font fontName="Arial" size="30" isBold="false" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[inema]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="10" width="115" height="78"/>
+				<textElement markup="styled">
+					<font fontName="Vladimir Script" size="50" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="10" width="42" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ticket#:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="152" y="10" width="23" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{info_cliente_id_cliente}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<line>
+					<reportElement x="4" y="76" width="181" height="1"/>
+					<graphicElement>
+						<pen lineStyle="Double" lineColor="#000033"/>
+					</graphicElement>
+				</line>
+			</elementGroup>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="0" width="62" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Titulo do Filme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="0" width="52" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Total(Mts)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="19" width="181" height="1" forecolor="#666666"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="105" y="0" width="34" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Quant.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="39" height="30"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{info_cliente_tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="1" width="41" height="30"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{info_cliente_total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="31" width="181" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="39" y="0" width="62" height="30"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{info_cliente_TituloFilme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="1" width="34" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_quantidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="70" y="34" width="116" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="53" splitType="Stretch"/>
+	</summary>
+</jasperReport>
