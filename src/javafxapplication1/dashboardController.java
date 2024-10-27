@@ -101,6 +101,8 @@ import net.sf.jasperreports.view.JasperViewer;
 
 public class dashboardController implements Initializable {
 
+    @FXML
+    private ComboBox<String> availableMovies_metodoPagamento;
 
     @FXML
 private TableView<FuncionarioData> tabelaFuncionario_Pendentes;
@@ -1369,44 +1371,45 @@ public void demitirFuncionario() {
    
    
    
-   public ObservableList<ClienteData> customerList(){
-       
-       
-       ObservableList<ClienteData> CustomerL= FXCollections.observableArrayList();
-       
-       String sql= "SELECT * FROM cliente";
-       
-       
-       connect=database.connectDb();
-       
-       try {
-           
-           ClienteData customerD;
-           
-           prepare= connect.prepareStatement(sql);
-           result= prepare.executeQuery();
-           
-           while(result.next()){
-               
-               customerD= new ClienteData(result.getInt("id"), 
-                       result.getString("tipo"),
-                       result.getString("TituloFilme"),
-                       result.getInt("quantidade"),
-                       result.getDouble("total"),
-                       result.getDate("data")
-               ,result.getTime("tempo"));
-               
-               CustomerL.add(customerD);
-               
-               
-           }
-           
-           
-           
-       } catch (Exception e) {e.printStackTrace();}
-       return CustomerL;
-       }
+public ObservableList<ClienteData> customerList() {
    
+    ObservableList<ClienteData> CustomerL = FXCollections.observableArrayList();
+   
+    // Modificando a consulta SQL para selecionar apenas clientes com Status igual a true (ou 1)
+    String sql = "SELECT * FROM cliente WHERE Status = 1";
+   
+    connect = database.connectDb();
+   
+    try {
+        ClienteData customerD;
+       
+        prepare = connect.prepareStatement(sql);
+        result = prepare.executeQuery();
+       
+        while (result.next()) {
+           
+            customerD = new ClienteData(
+                result.getInt("id"), 
+                result.getString("tipo"),
+                result.getString("TituloFilme"),
+                result.getInt("quantidade"),
+                result.getDouble("total"),
+                result.getDate("data"),
+                result.getTime("tempo"),
+                result.getString("assentos_comprados"),
+                result.getString("metodo_pagamento"),
+                result.getBoolean("Status")
+            );
+           
+            CustomerL.add(customerD);
+        }
+       
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return CustomerL;
+}
+
        
    private ObservableList<ClienteData> custList;
    
@@ -1453,61 +1456,68 @@ public void demitirFuncionario() {
    }
    
    
-   public void deleteCustomer(){
-       
-       String sql="DELETE FROM cliente WHERE id='"+ Costumers_Ticket.getText() +"'";
-       
-       connect = database.connectDb();
-       
-       try {
-           
-           Alert alert;
-           
-           statement = connect.createStatement();
-           
-           if(Costumers_Ticket.getText().isEmpty() ||
-             Costumers_Titulo.getText().isEmpty() ||
-             Costumers_ControleTempo.getText().isEmpty()||
-             Costumers_ControleData.getText().isEmpty()){
-           
-               alert= new Alert(Alert.AlertType.ERROR);
-               alert.setTitle("Mensagem de Erro");
-               alert.setHeaderText(null);
-               alert.setContentText("por favor, Selecione o Cliente primeiro");
-               alert.showAndWait();
-               }else{
-               
-               alert= new Alert(Alert.AlertType.CONFIRMATION);
-               alert.setTitle("Mensagem de confirmacao");
-               alert.setHeaderText(null);
-               alert.setContentText("tem certeza que deseja remover " + Costumers_Titulo.getText() + "?");
-               
-               Optional<ButtonType> option = alert.showAndWait();
-               
-               if(option.get() == ButtonType.OK){
-                   
-                   statement.executeUpdate(sql);
-                   
-                   alert= new Alert(Alert.AlertType.INFORMATION);
-                   alert.setTitle("Mensagem de Informacao");
-                   alert.setHeaderText(null);
-                   alert.setContentText("Removido com Sucesso!");
-                   alert.showAndWait();
-                   
-                   showCustomerList();
-                   clearCustomer();
-                   
-               }else{
-                   return;
-               }
+  public void deleteCustomer(){
+    
+    String sql = "UPDATE cliente SET status = 0 WHERE id = '" + Costumers_Ticket.getText() + "'";
+    
+    connect = database.connectDb();
+    
+    try {
+        
+        Alert alert;
+        
+        statement = connect.createStatement();
+        
+        if(Costumers_Ticket.getText().isEmpty() ||
+           Costumers_Titulo.getText().isEmpty() ||
+           Costumers_ControleTempo.getText().isEmpty() ||
+           Costumers_ControleData.getText().isEmpty()) {
+            
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Mensagem de Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione o cliente primeiro.");
+            alert.showAndWait();
+        } else {
+            
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Mensagem de Confirmação");
+            alert.setHeaderText(null);
+            alert.setContentText("Tem certeza que deseja desativar " + Costumers_Titulo.getText() + "?");
+            
+            Optional<ButtonType> option = alert.showAndWait();
+            
+            if(option.isPresent() && option.get() == ButtonType.OK) {
+                
+                // Executa o update para alterar o status para 0 em vez de excluir
+                statement.executeUpdate(sql);
+                
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Mensagem de Informação");
+                alert.setHeaderText(null);
+                alert.setContentText("Desativado com sucesso!");
+                alert.showAndWait();
+                
+                showCustomerList();
+                clearCustomer();
+                
+            } else {
+                return;
+            }
+        }
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (statement != null) statement.close();
+            if (connect != null) connect.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
 
-           }
-           
-           
-       } catch (Exception e) {e.printStackTrace(); }
-       
-   }
-   
    public void clearFuncionario(){
        funcionario_User.setText("");
        funcionario_email.setText("");
@@ -1556,8 +1566,13 @@ public void demitirFuncionario() {
   private int qty;
    
 
+@FXML
 public void buy() {
-    String sql = "INSERT INTO cliente(tipo,TituloFilme, quantidade, total, data, tempo) VALUES(?,?,?,?,?,?)";
+    
+    Boolean Status = true; 
+     
+    String sqlCliente = "INSERT INTO cliente(tipo, TituloFilme, quantidade, total, data, tempo, assentos_comprados, metodo_pagamento, Status) VALUES(?,?,?,?,?,?,?,?,?)";
+    String sqlInfoCliente = "INSERT INTO info_cliente(id_cliente, tipo, quantidade, total, TituloFilme) VALUES(?,?,?,?,?)";
     connect = database.connectDb();
 
     String tipo = "";
@@ -1573,50 +1588,40 @@ public void buy() {
     java.sql.Date setDate = new java.sql.Date(data.getTime());
 
     String horarioInicio = availableMovies_Horarios.getSelectionModel().getSelectedItem();
-    
+    String metodoPagamento = (String) availableMovies_metodoPagamento.getSelectionModel().getSelectedItem();
+
     try {
         LocalTime localTime = LocalTime.now();
         Time time = Time.valueOf(localTime);
-        qty = qty1 + qty2;  // Quantidade total de tickets a ser comprada
+        qty = qty1 + qty2;
 
-        // Verificação de quantidade de tickets
+        // Verificações de quantidade e seleção de filme
         if (qty <= 0) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Quantidade Inválida");
-            alert.setHeaderText(null);
-            alert.setContentText("A quantidade de tickets deve ser maior que zero.");
-            alert.showAndWait();
+            showErrorAlert("Quantidade Inválida", "A quantidade de tickets deve ser maior que zero.");
             return;
         }
 
         if (availableMovies_imageView.getImage() == null || availableMovies_titulo.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Mensagem de Erro");
-            alert.setHeaderText(null);
-            alert.setContentText("Por favor, selecione o filme primeiro.");
-            alert.showAndWait();
+            showErrorAlert("Erro", "Por favor, selecione o filme primeiro.");
             return;
         } 
         
         if (price1 == 0 && price2 == 0) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Mensagem de Erro");
-            alert.setHeaderText(null);
-            alert.setContentText("Por favor, indique a quantidade de tickets que deseja comprar.");
-            alert.showAndWait();
+            showErrorAlert("Erro", "Por favor, indique a quantidade de tickets que deseja comprar.");
             return;
         }
 
         if (horarioInicio == null || horarioInicio.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Mensagem de Erro");
-            alert.setHeaderText(null);
-            alert.setContentText("Por favor, selecione um horário para o filme.");
-            alert.showAndWait();
+            showErrorAlert("Erro", "Por favor, selecione um horário para o filme.");
             return;
         }
 
-        // Verifica se há tickets disponíveis para o horário selecionado
+        if (metodoPagamento == null || metodoPagamento.isEmpty()) {
+            showErrorAlert("Erro", "Por favor, selecione um método de pagamento.");
+            return;
+        }
+
+        // Verificar disponibilidade de tickets
         String sqlCheckTickets = "SELECT tickets_disponiveis FROM horario WHERE id_filme = ? AND Horario_Inicio = ?";
         prepare = connect.prepareStatement(sqlCheckTickets);
         prepare.setInt(1, getData.FilmeId);
@@ -1628,74 +1633,92 @@ public void buy() {
             ticketsDisponiveis = result.getInt("tickets_disponiveis");
         }
 
-        // Atualizar a label com os tickets disponíveis
         availableMovies_tickets.setText("Tickets disponíveis: " + ticketsDisponiveis);
 
         if (ticketsDisponiveis <= 0) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Tickets Indisponíveis");
-            alert.setHeaderText(null);
-            alert.setContentText("Desculpe, não há mais tickets disponíveis para este horário.");
-            alert.showAndWait();
+            showErrorAlert("Tickets Indisponíveis", "Desculpe, não há mais tickets disponíveis para este horário.");
             return;
         } else if (ticketsDisponiveis < qty) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Tickets Insuficientes");
-            alert.setHeaderText(null);
-            alert.setContentText("Desculpe, apenas " + ticketsDisponiveis + " tickets estão disponíveis para este horário.");
-            alert.showAndWait();
+            showErrorAlert("Tickets Insuficientes", "Desculpe, apenas " + ticketsDisponiveis + " tickets estão disponíveis para este horário.");
             return;
         }
 
-        // Atualiza os tickets disponíveis no banco
+        // Lista de assentos comprados
+        StringBuilder assentosComprados = new StringBuilder();
+        for (int i = ticketsDisponiveis; i > ticketsDisponiveis - qty; i--) {
+            assentosComprados.append(i).append(",");
+        }
+        assentosComprados.setLength(assentosComprados.length() - 1);
+
+        // Atualizar tickets disponíveis no banco
         String sqlUpdateHorario = "UPDATE horario SET tickets_disponiveis = tickets_disponiveis - ? WHERE id_filme = ? AND Horario_Inicio = ?";
         prepare = connect.prepareStatement(sqlUpdateHorario);
         prepare.setInt(1, qty);
         prepare.setInt(2, getData.FilmeId);
         prepare.setString(3, horarioInicio);
         prepare.executeUpdate();
+        
+       
 
-        // Agora, prosseguir com a inserção no cliente e info_cliente
-        prepare = connect.prepareStatement(sql);
+        // Inserção na tabela cliente
+        prepare = connect.prepareStatement(sqlCliente, Statement.RETURN_GENERATED_KEYS);
         prepare.setString(1, tipo);
         prepare.setString(2, availableMovies_titulo.getText());
         prepare.setString(3, String.valueOf(qty));
         prepare.setString(4, String.valueOf(total));
         prepare.setString(5, String.valueOf(setDate));
         prepare.setString(6, String.valueOf(time));
+        prepare.setString(7, assentosComprados.toString());
+        prepare.setString(8, metodoPagamento);  // 
+        prepare.setBoolean(9, Status); //
+        prepare.executeUpdate();
+
+        // Obtém o ID do cliente recém-inserido e atribui a `num`
+        ResultSet generatedKeys = prepare.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            num = generatedKeys.getInt(1);  // Atribui o ID gerado a `num`
+        }
+
+        // Inserção na tabela info_cliente
+        prepare = connect.prepareStatement(sqlInfoCliente);
+        prepare.setInt(1, num); // Usa `num` como ID do cliente
+        prepare.setString(2, tipo);
+        prepare.setInt(3, qty);
+        prepare.setDouble(4, total);
+        prepare.setString(5, availableMovies_titulo.getText());
         prepare.executeUpdate();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Mensagem de Informação");
         alert.setHeaderText(null);
-        alert.setContentText("Pagamento realizado com sucesso!");
+        alert.setContentText("Pagamento realizado com sucesso!\nAssentos comprados: " + assentosComprados.toString());
         alert.showAndWait();
-
-        // Recuperar o último ID inserido na tabela cliente
-        String sqll = "SELECT * FROM cliente";
-        prepare = connect.prepareStatement(sqll);
-        result = prepare.executeQuery();
-
-        num = 0;
-        while (result.next()) {
-            num = result.getInt("id");
-        }
-
-        // Inserção em info_cliente
-        String sql2 = "INSERT INTO info_cliente (id_cliente, tipo, quantidade, total, TituloFilme) VALUES(?,?,?,?,?)";
-        prepare = connect.prepareStatement(sql2);
-        prepare.setString(1, String.valueOf(num));
-        prepare.setString(2, tipo);
-        prepare.setString(3, String.valueOf(qty));
-        prepare.setString(4, String.valueOf(total));
-        prepare.setString(5, availableMovies_titulo.getText());
-        prepare.execute();
 
         clearPurchaseTicketInfo();
 
     } catch (Exception e) {
         e.printStackTrace();
     }
+}
+
+
+
+
+// Método auxiliar para mostrar alertas de erro
+private void showErrorAlert(String title, String message) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+}
+
+
+
+
+public void carregarMetodosPagamento() {
+    availableMovies_metodoPagamento.getItems().clear(); 
+    availableMovies_metodoPagamento.getItems().addAll("Mpesa", "POS"); 
 }
 
  
@@ -2487,7 +2510,7 @@ public void insertAddMovies() {
 
         } else {
 
-            // Verifica se algum campo está vazio, incluindo o campo de trailer
+            // Verifica se algum campo está vazio
             if (addMovies_Titulo.getText().isEmpty()
                     || addMovies_Genero.getText().isEmpty()
                     || addMovies_Duracao.getText().isEmpty()
@@ -2495,15 +2518,28 @@ public void insertAddMovies() {
                     || addMovies_Data.getValue() == null
                     || add_movies_descricao.getText().isEmpty()
                     || addmovies_Tickets.getText().isEmpty()
-                    || getData.Trailerpath == null || getData.Trailerpath.isEmpty()) { // Verifica se o campo do trailer está vazio
+                    || getData.Trailerpath == null || getData.Trailerpath.isEmpty()) {
 
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Mensagem de Erro");
                 alert.setHeaderText(null);
-                alert.setContentText("Preenche todos os espaços em branco!");
+                alert.setContentText("Preencha todos os espaços em branco!");
                 alert.showAndWait();
 
             } else {
+
+                // Número de tickets padrão inserido pelo usuário
+                int defaultTickets = Integer.parseInt(addmovies_Tickets.getText());
+
+                // Validação do número de tickets
+                if (defaultTickets > 50) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Mensagem de Erro");
+                    alert.setHeaderText(null);
+                    alert.setContentText("O número de tickets não pode superar o número de assentos (50)!");
+                    alert.showAndWait();
+                    return; // Interrompe o processo de inserção
+                }
 
                 // Insere o filme
                 String sql = "INSERT INTO filme (id, TituloFilme, genero, duracao, imagem, data, actual, Descricao, trailer, status) VALUES(?,?,?,?,?,?,?,?,?,?)";
@@ -2526,13 +2562,10 @@ public void insertAddMovies() {
                 prepare.setString(6, String.valueOf(addMovies_Data.getValue()));
                 prepare.setString(7, "Fim de Exibicao");
                 prepare.setString(8, add_movies_descricao.getText());
-                prepare.setString(9, uri2); // Atribui o valor do trailer
+                prepare.setString(9, uri2);
                 prepare.setBoolean(10, true);
 
                 prepare.execute();
-
-                // Número de tickets padrão inserido pelo usuário
-                int defaultTickets = Integer.parseInt(addmovies_Tickets.getText());
 
                 // Adiciona os horários automáticos após o filme ser inserido
                 HorarioDAO horarioDAO = new HorarioDAO();
@@ -2554,6 +2587,7 @@ public void insertAddMovies() {
         e.printStackTrace();
     }
 }
+
 
 
     
@@ -3176,6 +3210,7 @@ public void insertAddMovies() {
         
         carregarFuncionariosPendentes();
         
+        carregarMetodosPagamento();
     }
     
     

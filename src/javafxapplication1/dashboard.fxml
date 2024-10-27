@@ -271,7 +271,7 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addMovies_form" layoutX="342.0" layoutY="186.0" prefHeight="649.6" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="addMovies_form" layoutX="342.0" layoutY="186.0" prefHeight="649.6" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="825.0" prefWidth="364.0" styleClass="bigWhite" stylesheets="@DesigndashBoard.css">
                            <children>
@@ -303,7 +303,7 @@
                               <Button fx:id="addMovies_actualizarbtn" layoutX="198.0" layoutY="719.0" mnemonicParsing="false" onAction="#updateAddMovies" prefHeight="35.0" prefWidth="123.0" styleClass="update-btn" stylesheets="@DesigndashBoard.css" text="Actualizar" textFill="#c43939" />
                               <Button fx:id="addMovies_deletebtn" layoutX="199.0" layoutY="776.0" mnemonicParsing="false" onAction="#deleteAddMovies" prefHeight="36.0" prefWidth="122.0" styleClass="delete-btn" stylesheets="@DesigndashBoard.css" text="Deletar" textFill="#1d75b4" />
                               <TextField fx:id="addMovies_Genero" layoutX="159.0" layoutY="462.0" prefHeight="26.0" prefWidth="166.0" styleClass="add-textfield" />
-                              <TextField fx:id="addMovies_Duracao" layoutX="159.0" layoutY="515.0" prefHeight="26.0" prefWidth="166.0" styleClass="add-textfield" />
+                              <TextField fx:id="addMovies_Duracao" layoutX="159.0" layoutY="515.0" prefHeight="26.0" prefWidth="166.0" promptText="HH:MM:SS" styleClass="add-textfield" />
                               <DatePicker fx:id="addMovies_Data" layoutX="158.0" layoutY="561.0" prefHeight="31.0" prefWidth="168.0" promptText="MM-DD-AAAA" styleClass="combo-box" stylesheets="@DesigndashBoard.css" />
                               <Label layoutX="68.0" layoutY="615.0" text="Descricao:">
                                  <font>
@@ -311,7 +311,7 @@
                                  </font>
                               </Label>
                               <TextField fx:id="add_movies_descricao" layoutX="159.0" layoutY="610.0" prefHeight="26.0" prefWidth="166.0" styleClass="add-textfield" />
-                              <Button fx:id="add_movies_trailer" layoutX="253.0" layoutY="338.0" mnemonicParsing="false" onAction="#importVideo" prefHeight="41.0" prefWidth="50.0" styleClass="trailer-btn" stylesheets="@DesigndashBoard.css">
+                              <Button fx:id="add_movies_trailer" layoutX="253.0" layoutY="338.0" mnemonicParsing="false" onAction="#importVideo" prefHeight="42.0" prefWidth="86.0" styleClass="trailer-btn" stylesheets="@DesigndashBoard.css" text="Trailer">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="TV" />
                                  </graphic>
@@ -447,45 +447,51 @@
                                     <Font name="Microsoft Sans Serif" size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="791.0" layoutY="291.0" text="Total:">
+                              <Label layoutX="786.0" layoutY="293.0" text="Total:">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="availableMovies_Total" layoutX="844.0" layoutY="291.0" text="0.0 Mts">
+                              <Label fx:id="availableMovies_Total" layoutX="839.0" layoutY="293.0" text="0.0 Mts">
                                  <font>
                                     <Font name="Microsoft Sans Serif" size="18.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="availableMovies_comprarBtn" layoutX="946.0" layoutY="412.0" mnemonicParsing="false" onAction="#buy" prefHeight="38.0" prefWidth="103.0" styleClass="buy-btn" text="Comprar" />
-                              <Button fx:id="availableMovies_recibobtn" layoutX="800.0" layoutY="412.0" mnemonicParsing="false" onAction="#receipt" prefHeight="38.0" prefWidth="101.0" styleClass="limpar2-btn" text="Recibo" />
-                              <Button fx:id="availableMovies_limparbtn" layoutX="548.0" layoutY="412.0" mnemonicParsing="false" onAction="#clearPurchaseTicketInfo" prefHeight="42.0" prefWidth="102.0" styleClass="limpar-btn" stylesheets="@DesigndashBoard.css" text="limpar" />
+                              <Button fx:id="availableMovies_comprarBtn" layoutX="948.0" layoutY="450.0" mnemonicParsing="false" onAction="#buy" prefHeight="38.0" prefWidth="103.0" styleClass="buy-btn" text="Comprar" />
+                              <Button fx:id="availableMovies_recibobtn" layoutX="802.0" layoutY="450.0" mnemonicParsing="false" onAction="#receipt" prefHeight="38.0" prefWidth="101.0" styleClass="limpar2-btn" text="Recibo" />
+                              <Button fx:id="availableMovies_limparbtn" layoutX="550.0" layoutY="450.0" mnemonicParsing="false" onAction="#clearPurchaseTicketInfo" prefHeight="42.0" prefWidth="102.0" styleClass="limpar-btn" stylesheets="@DesigndashBoard.css" text="limpar" />
                               <ComboBox fx:id="availableMovies_Horarios" layoutX="578.0" layoutY="340.0" onMouseClicked="#setupHorariosListener" prefWidth="150.0" styleClass="combo-box" stylesheets="@DesigndashBoard.css" />
                               <Text layoutX="500.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horarios:">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Text>
-                              <Label layoutX="791.0" layoutY="239.0" text="Tickets:">
+                              <Label layoutX="786.0" layoutY="241.0" text="Tickets:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="availableMovies_tickets" layoutX="863.0" layoutY="239.0" text="0">
+                              <Label fx:id="availableMovies_tickets" layoutX="858.0" layoutY="241.0" text="0">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="AvailableMovies_butaoDetalhes" layoutX="791.0" layoutY="339.0" mnemonicParsing="false" onAction="#showTicketDetails" styleClass="close">
+                              <Button fx:id="AvailableMovies_butaoDetalhes" layoutX="793.0" layoutY="401.0" mnemonicParsing="false" onAction="#showTicketDetails" styleClass="close">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="INFO_CIRCLE" size="1.8em" />
                                  </graphic>
                               </Button>
-                              <Label layoutX="823.0" layoutY="342.0" text="Detalhes">
+                              <Label layoutX="825.0" layoutY="404.0" text="Detalhes">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <ComboBox fx:id="availableMovies_metodoPagamento" layoutX="948.0" layoutY="338.0" onMouseClicked="#setupHorariosListener" prefWidth="150.0" styleClass="combo-box" stylesheets="@DesigndashBoard.css" />
+                              <Text layoutX="776.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metodos de Pagamento:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                      </children>
@@ -554,7 +560,7 @@
                               <AnchorPane fx:id="filmdesc_anchorTrailer" layoutX="250.0" layoutY="98.0" prefHeight="514.0" prefWidth="914.0" styleClass="bigBlack1" stylesheets="@DesigndashBoard.css">
                                  <children>
                                     <MediaView fx:id="filmDesc_VideoTrailer" fitHeight="514.0" fitWidth="913.0" layoutX="7.0" layoutY="7.0" />
-                                    <Button fx:id="filmeDesc_start" layoutX="428.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleStartClick" styleClass="PLAY" stylesheets="@DesigndashBoard.css">
+                                    <Button fx:id="filmeDesc_start" layoutX="439.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleStartClick" styleClass="PLAY" stylesheets="@DesigndashBoard.css">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -562,7 +568,7 @@
                                           <FontAwesomeIconView fill="WHITE" glyphName="PLAY_CIRCLE" size="2.5em" />
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="filmeDesc_PAUSE" layoutX="428.0" layoutY="230.0" mnemonicParsing="false" onAction="#handlePauseClick" styleClass="PLAY" stylesheets="@DesigndashBoard.css">
+                                    <Button fx:id="filmeDesc_PAUSE" layoutX="439.0" layoutY="243.0" mnemonicParsing="false" onAction="#handlePauseClick" styleClass="PLAY" stylesheets="@DesigndashBoard.css">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -608,7 +614,7 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="funcionario_tela" prefHeight="849.6" prefWidth="1221.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="funcionario_tela" prefHeight="849.6" prefWidth="1221.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="25.0" layoutY="19.0" prefHeight="807.0" prefWidth="311.0" styleClass="bigWhite" stylesheets="@DesigndashBoard.css">
                            <children>

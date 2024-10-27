@@ -21,16 +21,60 @@ public class ClienteData {
   private double total;
   private Date data;
   private Time tempo;
+  private String Assentos_comprados;
+  private String Metodos_pagamento;
+  private Boolean Status;
 
-    public ClienteData(int id, String tipo, String titulo,int quantidade, double total, Date data, Time tempo) {
+    public ClienteData(int id, String tipo, String titulo, int quantidade, double total, Date data, Time tempo, String Assentos_comprados, String Metodos_pagamento, Boolean Status) {
         this.id = id;
         this.tipo = tipo;
-        this.titulo=titulo;
+        this.titulo = titulo;
         this.quantidade = quantidade;
         this.total = total;
         this.data = data;
-        this.tempo=tempo;
+        this.tempo = tempo;
+        this.Assentos_comprados = Assentos_comprados;
+        this.Metodos_pagamento = Metodos_pagamento;
+        this.Status = Status;
     }
+
+    public ClienteData(int id, String tipo, String titulo, int quantidade, double total, Date data, Time tempo) {
+        this.id = id;
+        this.tipo = tipo;
+        this.titulo = titulo;
+        this.quantidade = quantidade;
+        this.total = total;
+        this.data = data;
+        this.tempo = tempo;
+    }
+    
+    
+
+    public String getAssentos_comprados() {
+        return Assentos_comprados;
+    }
+
+    public void setAssentos_comprados(String Assentos_comprados) {
+        this.Assentos_comprados = Assentos_comprados;
+    }
+
+    public String getMetodos_pagamento() {
+        return Metodos_pagamento;
+    }
+
+    public void setMetodos_pagamento(String Metodos_pagamento) {
+        this.Metodos_pagamento = Metodos_pagamento;
+    }
+
+    public Boolean getStatus() {
+        return Status;
+    }
+
+    public void setStatus(Boolean Status) {
+        this.Status = Status;
+    }
+
+  
 
     public Time getTempo() {
         return tempo;
